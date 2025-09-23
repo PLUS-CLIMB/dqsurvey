@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Conformance | Data Quality Evaluation</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Homepage Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+<div class="container-fluid">
+<a class="navbar-brand fw-bold text-primary" href="index.html">Data Quality Evaluation</a>
+<button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="section1.html">Initial Info</a></li>
+<li class="nav-item"><a class="nav-link" href="section2.html">Descriptives</a></li>
+<li class="nav-item"><a class="nav-link" href="section3.html">Design</a></li>
+<li class="nav-item" id="nav-conformance"><a class="nav-link" href="section4.html">Conformance</a></li>
+<li class="nav-item"><a class="nav-link" href="section5.html">Context</a></li>
+<li class="nav-item"><a class="nav-link" href="section6.html">Summary</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="overlay"></div>
+<div class="container my-4 main-content fade-in">
+<!-- Section 3 - Conformance (only visible for Data Products) -->
+<div class="section" id="conformance">
+<h3>3. Conformance</h3>
+<div class="alert alert-info">
+<strong>Note:</strong> Percent values relate to AOI coverage (for Use-case adequacy) or to the data source's spatial extent (for General quality).
+      </div>
+<!-- Completeness Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Completeness</strong></h4>
+<div class="mb-3">
+<label>Data values / Spatial features completeness (%)</label>
+<input class="form-control" id="valuesCompleteness" max="100" min="0" placeholder="% of completeness of data values" type="number"/>
+</div>
+<div class="mb-3">
+<label>Attribute completeness (%)</label>
+<input class="form-control" id="attributeCompleteness" max="100" min="0" placeholder="% of completeness of attributes" type="number"/>
+</div>
+<div class="mb-3">
+<label>Thematic selectivity</label>
+<textarea class="form-control" id="thematicSelectivity" placeholder="Systematic over/under-representation of features/classes"></textarea>
+</div>
+<div class="mb-3">
+<label>Spatial variability</label>
+<textarea class="form-control" id="spatialVariability" placeholder="Spatial pattern of completeness (e.g., regional differences)"></textarea>
+</div>
+<div class="mb-3">
+<label>Score completeness</label>
+<select class="form-select score-field" data-scoregroup="conformance-completeness">
+<option value="">Select score</option>
+<option value="1">1: &lt;30%</option>
+<option value="2">2: 30–60%</option>
+<option value="3">3: 60–80%</option>
+<option value="4">4: &gt;80%</option>
+</select>
+</div>
+</div>
+<hr class="my-4 border-danger border-1"/>
+<!-- Consistency Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Consistency</strong></h4>
+<div class="mb-3">
+<label>Topological / Geometric consistency (%)</label>
+<input class="form-control" id="topoConsistency" max="100" min="0" placeholder="% following topological rules (e.g., closed polygons)" type="number"/>
+</div>
+<div class="mb-3">
+<label>Domain consistency</label>
+<textarea class="form-control" id="domainConsistency" placeholder="Adherence to predefined rules and constraints (valid value ranges, etc.)"></textarea>
+</div>
+<div class="mb-3">
+<label>Thematic consistency</label>
+<textarea class="form-control" id="thematicConsistency" placeholder="No conceptual contradictions; consistent classification codes"></textarea>
+</div>
+<div class="mb-3">
+<label>Spatial consistency</label>
+<textarea class="form-control" id="spatialConsistency" placeholder="Distribution across space; homogeneous vs. clustered"></textarea>
+</div>
+<div class="mb-3">
+<label>Sources of inconsistencies</label>
+<div class="form-check">
+<input class="form-check-input inconsistency-check" id="inconsistencyMeasurement" type="checkbox" value="measurement"/>
+<label class="form-check-label" for="inconsistencyMeasurement">Measurement</label>
+</div>
+<div class="form-check">
+<input class="form-check-input inconsistency-check" id="inconsistencyTemporal" type="checkbox" value="temporal"/>
+<label class="form-check-label" for="inconsistencyTemporal">Temporal</label>
+</div>
+<div class="form-check">
+<input class="form-check-input inconsistency-check" id="inconsistencyScale" type="checkbox" value="scale"/>
+<label class="form-check-label" for="inconsistencyScale">Scale</label>
+</div>
+<div class="form-check">
+<input class="form-check-input inconsistency-check" id="inconsistencyMethodology" type="checkbox" value="methodology"/>
+<label class="form-check-label" for="inconsistencyMethodology">Methodology</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="inconsistencyOther" type="checkbox" value="other"/>
+<label class="form-check-label" for="inconsistencyOther">Other</label>
+</div>
+<input class="form-control mt-2" id="inconsistencyOtherText" placeholder="Describe other sources of inconsistencies" style="display:none;" type="text"/>
+</div>
+<div class="mb-3">
+<label>Score consistency</label>
+<select class="form-select score-field" data-scoregroup="conformance-consistency">
+<option value="">Select score</option>
+<option value="1">1: severe inconsistencies restrict data use</option>
+<option value="2">2: inconsistencies exist, but data can provide some info</option>
+<option value="3">3: acceptable amount and type of inconsistencies</option>
+<option value="4">4: (nearly) no inconsistencies</option>
+</select>
+</div>
+</div>
+<hr class="my-4 border-danger border-1"/>
+<!-- Accuracy Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Accuracy</strong></h4>
+<div class="mb-3">
+<label>Accuracy Type (auto-shown based on data type)</label>
+<div id="accuracy-inputs">
+<div id="thematic-accuracy" style="display: none;">
+<label>Thematic classification accuracy (%)</label>
+<input class="form-control" id="thematicAccuracy" max="100" min="0" placeholder="% of correct classification results" type="number"/>
+<div class="form-text">For Remote Sensing data</div>
+</div>
+<div id="attribute-accuracy" style="display: none;">
+<label>Attribute accuracy (%)</label>
+<input class="form-control" id="attributeAccuracy" max="100" min="0" placeholder="% of correct attribute values" type="number"/>
+<div class="form-text">For GIS data</div>
+</div>
+<div id="model-performance" style="display: none;">
+<label>Model performance</label>
+<textarea class="form-control" id="modelPerformance" placeholder="Assessment of model performance (metrics, validation)"></textarea>
+<div class="form-text">For Models/ML or Predictions</div>
+</div>
+<div id="data-plausibility" style="display: none;">
+<label>Data plausibility</label>
+<textarea class="form-control" id="dataPlausibility" placeholder="Assessment of data plausibility"></textarea>
+<div class="form-text">For Survey or Other data</div>
+</div>
+</div>
+</div>
+<div class="mb-3">
+<label>Validation method</label>
+<textarea class="form-control" id="validationMethod" placeholder="Description and reputation of validation method"></textarea>
+</div>
+<div class="mb-3">
+<label>Validation data</label>
+<textarea class="form-control" id="validationData" placeholder="Description and quality of reference / inter-comparison data"></textarea>
+</div>
+<div class="mb-3">
+<label>Temporal stability</label>
+<textarea class="form-control" id="temporalStability" placeholder="Predictability of accuracy across time"></textarea>
+</div>
+<div class="mb-3">
+<label>Thematic stability</label>
+<textarea class="form-control" id="thematicStability" placeholder="Similarity of accuracy regarding thematic content"></textarea>
+</div>
+<div class="mb-3">
+<label>Spatial stability</label>
+<textarea class="form-control" id="spatialStability" placeholder="Consistency of accuracy across space"></textarea>
+</div>
+<div class="mb-3">
+<label>Uncertainty/sensitivity analyses</label>
+<textarea class="form-control" id="uncertaintyAnalyses" placeholder="Results of uncertainty/sensitivity analyses"></textarea>
+</div>
+<div class="mb-3">
+<label>Sources of uncertainties</label>
+<div class="form-check">
+<input class="form-check-input" id="uncertaintyInputData" name="uncertaintySources" type="checkbox" value="inputData"/>
+<label class="form-check-label" for="uncertaintyInputData">Input data (e.g., haziness/cloud cover, incompleteness)</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="uncertaintyMethodology" name="uncertaintySources" type="checkbox" value="methodology"/>
+<label class="form-check-label" for="uncertaintyMethodology">Methodology (e.g., modelling error, bias)</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="uncertaintyInconsistency" name="uncertaintySources" type="checkbox" value="inconsistency"/>
+<label class="form-check-label" for="uncertaintyInconsistency">Inconsistency (e.g., country-dependent schema)</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="uncertaintyInterpretability" name="uncertaintySources" type="checkbox" value="interpretability"/>
+<label class="form-check-label" for="uncertaintyInterpretability">Interpretability (e.g., missing legend, unclear attributes)</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="uncertaintyOther" name="uncertaintySources" type="checkbox" value="other"/>
+<label class="form-check-label" for="uncertaintyOther">Other</label>
+</div>
+<input class="form-control mt-2" id="uncertaintyOtherText" placeholder="Describe other sources of uncertainties" style="display:none;" type="text"/>
+</div>
+<div class="mb-3">
+<label>Score accuracy</label>
+<select class="form-select score-field" data-scoregroup="conformance-accuracy">
+<option value="">Select score</option>
+<option value="1">1: no validity check, severe restrictions on data usage [thematic accuracy: &lt;60%]</option>
+<option value="2">2: unclear validation, low accuracy/stability, high uncertainty [thematic accuracy: 60–80%]</option>
+<option value="3">3: acceptable validation, accuracy, uncertainty, stability [thematic accuracy: 80–90%]</option>
+<option value="4">4: high accuracy/stability, minor uncertainties [thematic accuracy: &gt;90%]</option>
+</select>
+</div>
+</div>
+<hr class="my-4 border-danger border-1"/>
+<!-- Reproducibility Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Reproducibility</strong></h4>
+<div class="mb-3">
+<label>Clarity of method</label>
+<textarea class="form-control" id="methodClarity" placeholder="Comprehensibility and documentation of the method"></textarea>
+<input class="form-control mt-2" id="methodDocsLink" placeholder="Link to documentation, guides or read-me files" type="url"/>
+</div>
+<div class="mb-3">
+<label>Reputation of method</label>
+<textarea class="form-control" id="methodReputation" placeholder="Suitability, strengths and limitations of the method"></textarea>
+</div>
+<div class="mb-3">
+<label>Transferability of method</label>
+<textarea class="form-control" id="methodTransferability" placeholder="Describe the transferability of the method"></textarea>
+</div>
+<div class="mb-3">
+<label>Availability of code</label>
+<select class="form-select" id="codeAvailability">
+<option value="">Select</option>
+<option value="yes">Yes</option>
+<option value="partly">Partly</option>
+<option value="unknown">Unknown</option>
+<option value="no">No</option>
+</select>
+<input class="form-control mt-2" id="codeRepo" placeholder="Link to code repository (if available)" type="url"/>
+</div>
+<div class="mb-3">
+<label>Resources needed</label>
+<textarea class="form-control" id="resourcesNeeded" placeholder="Software, licenses, costs, restrictions"></textarea>
+</div>
+<div class="mb-3">
+<label>Score reproducibility</label>
+<select class="form-select score-field" data-scoregroup="conformance-reproducibility">
+<option value="">Select score</option>
+<option value="1">1: documentation missing or method/resources unknown</option>
+<option value="2">2: documentation details unclear, low transferability/reproducibility</option>
+<option value="3">3: established method, partly transferable/reproducible</option>
+<option value="4">4: established method, fully transferable, accessible code, open-source software</option>
+</select>
+</div>
+</div>
+<hr class="my-4 border-danger border-1"/>
+<!-- Input Data Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Input Data</strong></h4>
+<div class="mb-3">
+<label>Traceability</label>
+<textarea class="form-control" id="traceability" placeholder="Documentation of input data used for the product"></textarea>
+</div>
+<div class="mb-3">
+<label>Input Data (name, link, quality)</label>
+<div class="form-text mb-2">Add each input dataset with its name, source link, and quality score.</div>
+<div id="input-data-list">
+<div class="row g-2 mb-2 align-items-center input-data-entry">
+<div class="col-md-4 position-relative">
+<input autocomplete="off" class="form-control dataset-name" name="inputName[]" placeholder="Dataset Name" type="text"/>
+<ul class="list-group position-absolute w-100 z-3 suggestion-list" style="top: 100%; max-height: 150px; overflow-y: auto;"></ul>
+</div>
+<div class="col-md-4">
+<input class="form-control" name="inputLink[]" placeholder="Dataset Link" type="url"/>
+</div>
+<div class="col-md-3">
+<select class="form-select" name="inputScore[]">
+<option value="">Score</option>
+<option value="1">1 - Low</option>
+<option value="2">2 - Medium</option>
+<option value="3">3 - High</option>
+</select>
+</div>
+<div class="col-md-1">
+<button class="btn btn-outline-success add-input-data" type="button">+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-3">
+<label>Consistency of input data</label>
+<textarea class="form-control" id="inputConsistency" placeholder="Homogeneity of multiple inputs (e.g., same resolution/date)"></textarea>
+</div>
+<div class="mb-3">
+<label>Model input data fit</label>
+<textarea class="form-control" id="inputDataFit" placeholder="Compatibility of input data with the used methodology"></textarea>
+</div>
+<div class="mb-3">
+<label>Score input data</label>
+<select class="form-select score-field" data-scoregroup="conformance-inputdata">
+<option value="">Select score</option>
+<option value="1">1: documentation missing or input data unknown</option>
+<option value="2">2: input data not traceable/accessible, low reliability/suitability</option>
+<option value="3">3: input data partly traceable/accessible, acceptable reliability/suitability</option>
+<option value="4">4: input data fully traceable and accessible, very reliable and highly suitable</option>
+</select>
+</div>
+</div>
+</div>
+<div class="navigation-buttons">
+<a class="btn-nav btn-previous" href="section3.html">Previous</a>
+<a class="btn-nav btn-next" href="section5.html">Next Section</a>
+</div>
+<script src="js/script_new.js"></script>
+<script src="js/script_new.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<footer class="text-center py-3 mt-auto bg-light border-top">
+<small>© 2025 Data Quality Evaluation • Created by Khizer &amp; Team</small>
+</footer>
+</body>
+</html>

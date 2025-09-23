@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Design | Data Quality Evaluation</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Homepage Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+<div class="container-fluid">
+<a class="navbar-brand fw-bold text-primary" href="index.html">Data Quality Evaluation</a>
+<button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="section1.html">Initial Info</a></li>
+<li class="nav-item"><a class="nav-link" href="section2.html">Descriptives</a></li>
+<li class="nav-item"><a class="nav-link" href="section3.html">Design</a></li>
+<li class="nav-item" id="nav-conformance"><a class="nav-link" href="section4.html">Conformance</a></li>
+<li class="nav-item"><a class="nav-link" href="section5.html">Context</a></li>
+<li class="nav-item"><a class="nav-link" href="section6.html">Summary</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="overlay"></div>
+<div class="container my-4 main-content fade-in">
+<!-- Section 2 - Design -->
+<div class="section" id="design">
+<h3>2. Design</h3>
+<!-- Spatial Resolution Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Spatial Resolution</strong></h4>
+<div class="mb-3">
+<label>Spatial Resolution</label>
+<div id="resolution-inputs">
+<div id="pixel-resolution" style="display: none;">
+<div class="input-group">
+<input class="form-control" id="pixelResolutionValue" placeholder="Enter pixel size" type="number"/>
+<span class="input-group-text">meters</span>
+</div>
+<div class="form-text">Pixel size for Remote Sensing data</div>
+</div>
+<div id="grid-resolution" style="display: none;">
+<div class="input-group">
+<input class="form-control" id="gridResolutionValue" placeholder="Enter grid size" type="number"/>
+<span class="input-group-text">meters</span>
+</div>
+<div class="form-text">Grid size for other data types</div>
+</div>
+<div id="aggregation-resolution" style="display: none;">
+<select class="form-select" id="aggregationResolutionLevel">
+<option value="">Select aggregation level</option>
+<option value="country">Country/Federation</option>
+<option value="region">Region/Province/State</option>
+<option value="city">City/City District/Village</option>
+<option value="household">Household</option>
+</select>
+<div class="form-text">Aggregation level for administrative data</div>
+</div>
+</div>
+</div>
+<!-- General Design Scoring -->
+<div class="mb-3 general-design-only">
+<label>Score general design spatial resolution</label>
+<select class="form-select score-field" data-scoregroup="design-resolution">
+<option value="">Select score (1 to 4)</option>
+<option value="1">1: &gt;30m (RS/grid) / country/federation</option>
+<option value="2">2: 5–30m (RS/grid) / region, province, state</option>
+<option value="3">3: 1–5m (RS/grid) / city, city district, village</option>
+<option value="4">4: &lt;1m (RS/grid) / household</option>
+</select>
+</div>
+<!-- Use-case specific fields -->
+<div class="use-case-only" style="display:none;">
+<div class="mb-3">
+<label>Optimal spatial resolution (auto-filled)</label>
+<input class="form-control" id="optimalResolution" readonly="" type="text"/>
+</div>
+<div class="mb-3">
+<label>Spatial fit for purpose</label>
+<textarea class="form-control" id="spatialFit" placeholder="Describe fit with use-case requirements"></textarea>
+</div>
+<div class="mb-3">
+<label>Deviation from optimum spatial resolution</label>
+<input class="form-control" id="spatialDeviation" placeholder="Auto-calculated" readonly="" type="text"/>
+</div>
+<div class="mb-3">
+<label>Score spatial fit for purpose</label>
+<select class="form-select score-field" data-scoregroup="usecase-spatial-fit">
+<option value="">Select score (1 to 4)</option>
+<option value="1">1: data cannot be used in a meaningful way</option>
+<option value="2">2: data are coarse, but can be used</option>
+<option value="3">3: spatial resolution is acceptable</option>
+<option value="4">4: very high fit of spatial resolution</option>
+</select>
+</div>
+</div>
+</div>
+<hr class="my-4 border-danger border-1"/>
+<!-- Coverage Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Spatial Coverage</strong></h4>
+<div class="mb-3">
+<label>General data extent</label>
+<select class="form-select" id="generalExtent">
+<option value="">Select coverage</option>
+<option value="city">City/Village</option>
+<option value="local">Local</option>
+<option value="regional">Regional</option>
+<option value="country">Country</option>
+<option value="federations">Federations / multiple countries</option>
+<option value="continent">Continent</option>
+<option value="global">Global</option>
+<option value="other">Other</option>
+</select>
+<input class="form-control mt-2" id="generalExtentDetails" placeholder="Name or additional description of coverage" type="text"/>
+</div>
+<!-- General scoring -->
+<div class="mb-3 general-design-only">
+<label>Score general design spatial coverage</label>
+<select class="form-select score-field" data-scoregroup="design-coverage">
+<option value="">Select score (1 to 4)</option>
+<option value="1">1: local, regional</option>
+<option value="2">2: country</option>
+<option value="3">3: continent, multiple countries</option>
+<option value="4">4: global</option>
+</select>
+</div>
+<!-- Use-case specific fields -->
+<div class="use-case-only" style="display:none;">
+<div class="mb-3">
+<label>Coverage of AOI (%)</label>
+<input class="form-control" id="aoiCoverage" max="100" min="0" placeholder="Enter % coverage of AOI" type="number"/>
+</div>
+<div class="mb-3 remote-sensing-only" style="display:none;">
+<label>Cloud cover / haziness (%)</label>
+<input class="form-control" id="cloudCover" max="100" min="0" placeholder="Enter % obscured" type="number"/>
+<div class="form-text">Only applicable for remote sensing data</div>
+</div>
+<div class="mb-3">
+<label>Deviation from full coverage</label>
+<input class="form-control" id="coverageDeviation" placeholder="Auto-calculated" readonly="" type="text"/>
+</div>
+<div class="mb-3">
+<label>Score spatial fit of coverage</label>
+<select class="form-select score-field" data-scoregroup="usecase-coverage-fit" id="coverageFitScore">
+<option value="">Select score (1 to 4)</option>
+<option value="1">1: &lt;30%</option>
+<option value="2">2: 30–60%</option>
+<option value="3">3: 60–80%</option>
+<option value="4">4: &gt;80%</option>
+</select>
+</div>
+</div>
+</div>
+<hr class="my-4 border-danger border-1"/>
+<!-- Timeliness Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Timeliness</strong></h4>
+<div class="mb-3">
+<label>Data collection / creation date</label>
+<input class="form-control" id="collectionDate" type="date"/>
+</div>
+<div class="mb-3">
+<label>Temporal resolution</label>
+<select class="form-select" id="temporalResolution">
+<option value="">Select resolution</option>
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
+<option value="monthly">Monthly</option>
+<option value="quarterly">Quarterly</option>
+<option value="yearly">Yearly</option>
+<option value="decadal">Decadal</option>
+<option value="unknown">Unknown</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="mb-3">
+<label>Version / Latest update / Latest measure</label>
+<input class="form-control" id="latestUpdate" type="date"/>
+</div>
+<div class="mb-3">
+<label>Temporal extent</label>
+<input class="form-control" id="temporalExtent" placeholder="YYYY-MM-DD – YYYY-MM-DD (leave blank if ongoing)" type="text"/>
+<div class="form-text">Select the start and end of data sampling period</div>
+</div>
+<div class="mb-3">
+<label>Temporal validity</label>
+<input class="form-control" id="temporalValidity" placeholder="YYYY-MM-DD – YYYY-MM-DD" type="text"/>
+<div class="form-text">Start and end date of known or estimated data validity</div>
+</div>
+<!-- General scoring -->
+<div class="mb-3 general-design-only">
+<label>Score general design timeliness</label>
+<select class="form-select score-field" data-scoregroup="design-timeliness">
+<option value="">Select score (1 to 4)</option>
+<option value="1">1: single valid data collection</option>
+<option value="2">2: on demand or irregular data collection and updates</option>
+<option value="3">3: regular data collection, long intervals; valid for years</option>
+<option value="4">4: regular data collection with short intervals; valid for decades</option>
+</select>
+</div>
+<!-- Use-case specific -->
+<div class="use-case-only" style="display:none;">
+<div class="mb-3">
+<label>Optimum collection date (auto-filled)</label>
+<input class="form-control" id="optimumCollectionAuto" readonly="" type="text"/>
+</div>
+<div class="mb-3">
+<label>Deviation from optimum collection date</label>
+<input class="form-control" id="temporalDeviation" placeholder="Auto-calculated" readonly="" type="text"/>
+</div>
+<div class="mb-3">
+<label>Score temporal fit</label>
+<select class="form-select score-field" data-scoregroup="usecase-temporal-fit">
+<option value="">Select score (1 to 4)</option>
+<option value="1">1: out-dated data, cannot be used responsibly</option>
+<option value="2">2: low temporal fit, but data are usable</option>
+<option value="3">3: temporal deviation is acceptable</option>
+<option value="4">4: very high temporal fit</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<div class="navigation-buttons">
+<a class="btn-nav btn-previous" href="section2.html">Previous</a>
+<a class="btn-nav btn-next" href="section4.html">Next Section</a>
+</div>
+<script src="js/script_new.js"></script>
+<script src="js/script_new.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<footer class="text-center py-3 mt-auto bg-light border-top">
+<small>© 2025 Data Quality Evaluation • Created by Khizer &amp; Team</small>
+</footer>
+</body>
+</html>

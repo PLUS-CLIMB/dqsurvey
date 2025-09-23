@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Descriptives | Data Quality Evaluation</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Homepage Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+<div class="container-fluid">
+<a class="navbar-brand fw-bold text-primary" href="index.html">Data Quality Evaluation</a>
+<button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="section1.html">Initial Info</a></li>
+<li class="nav-item"><a class="nav-link" href="section2.html">Descriptives</a></li>
+<li class="nav-item"><a class="nav-link" href="section3.html">Design</a></li>
+<li class="nav-item" id="nav-conformance"><a class="nav-link" href="section4.html">Conformance</a></li>
+<li class="nav-item"><a class="nav-link" href="section5.html">Context</a></li>
+<li class="nav-item"><a class="nav-link" href="section6.html">Summary</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="overlay"></div>
+<div class="container my-4 main-content fade-in">
+<!-- Section 1 - Descriptives -->
+<div class="section" id="descriptives">
+<h3>1. Descriptives</h3>
+<!-- Metadata Documentation Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Metadata Documentation</strong></h4>
+<div class="mb-3">
+<label>Identifier</label>
+<input class="form-control" id="identifier" placeholder="DOI or other unique reference" type="text"/>
+</div>
+<div class="mb-3">
+<label>Dataset Description</label>
+<input class="form-control" id="datasetDescription" placeholder="Brief description" type="text"/>
+<input class="form-control" id="datasetDescriptionLink" placeholder="Link to summary / abstract / description" type="url"/>
+</div>
+<div class="mb-3 position-relative">
+<label>Subject/Keywords</label>
+<div class="form-text">Start typing to see suggestions. Press Enter or click to add.</div>
+<input class="form-control" id="keyword-input" placeholder="Type a keyword..."/>
+<ul class="list-group position-absolute w-100 suggestion-list" id="suggestions" style="top: 100%; display: none;"></ul>
+<div class="mt-2 d-flex flex-wrap gap-2" id="keyword-tags"></div>
+</div>
+<div class="mb-3">
+<label>Language</label>
+<select class="form-select" id="languageDropdown">
+<option value="">Select language</option>
+<option value="English">English</option>
+<option value="French">French</option>
+<option value="German">German</option>
+<option value="Spanish">Spanish</option>
+<option value="Chinese">Chinese</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="mb-3">
+<label>Metadata Documentation</label>
+<input class="form-control" id="metadataDoc" placeholder="Completeness, richness &amp; understandability of metadata" type="text"/>
+<label class="mt-2" for="metadata-conformance">Conformance to established standards</label>
+<select class="form-select" id="metadata-conformance">
+<option value="">Select conformance</option>
+<option value="no">No</option>
+<option value="unclear">Unclear</option>
+<option value="yes">Yes</option>
+</select>
+<fieldset class="mt-3" id="metadata-standards" style="display: none;">
+<legend class="h6">Standards used:</legend>
+<div class="form-check">
+<input class="form-check-input" id="iso19115" name="metadata-standard" type="checkbox" value="ISO 19115"/>
+<label class="form-check-label" for="iso19115">ISO 19115</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="csdgm" name="metadata-standard" type="checkbox" value="CSDGM"/>
+<label class="form-check-label" for="csdgm">CSDGM</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="dcmi" name="metadata-standard" type="checkbox" value="DCMI"/>
+<label class="form-check-label" for="dcmi">DCMI</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="iso19139" name="metadata-standard" type="checkbox" value="ISO 19139"/>
+<label class="form-check-label" for="iso19139">ISO 19139</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="metadata-other" name="metadata-standard" type="checkbox" value="other"/>
+<label class="form-check-label" for="metadata-other">Other</label>
+</div>
+<div class="mt-2" id="metadata-other-container" style="display: none;">
+<input class="form-control" name="metadata-standard-other[]" placeholder="Describe other standard" type="text"/>
+<button class="btn btn-sm btn-secondary mt-1" id="add-other-standard" type="button">+</button>
+</div>
+</fieldset>
+</div>
+<div class="mb-3">
+<label>Score Metadata Documentation</label>
+<select class="form-select score-field" data-scoregroup="descriptives">
+<option value="">Select score</option>
+<option value="1">1: documentation largely missing</option>
+<option value="2">2: metadata not self-explanatory and standardized</option>
+<option value="3">3: metadata largely self-explanatory and standardized</option>
+<option value="4">4: fully documented, comprehensible, machine-readable</option>
+</select>
+</div>
+</div>
+<hr class="my-4 border-danger border-1"/>
+<!-- Accessibility Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Accessibility</strong></h4>
+<div class="mb-3">
+<label>Access Restrictions</label>
+<div class="form-check">
+<input class="form-check-input access-check" id="accessPublic" type="checkbox" value="Public"/>
+<label class="form-check-label" for="accessPublic">Public</label>
+</div>
+<div class="form-check">
+<input class="form-check-input access-check" id="accessInternal" type="checkbox" value="Internal"/>
+<label class="form-check-label" for="accessInternal">Internal</label>
+</div>
+<div class="form-check">
+<input class="form-check-input access-check" id="accessRestricted" type="checkbox" value="Restricted"/>
+<label class="form-check-label" for="accessRestricted">Restricted</label>
+</div>
+<div class="form-check">
+<input class="form-check-input access-check" id="accessOther" type="checkbox" value="Other"/>
+<label class="form-check-label" for="accessOther">Other / Additional</label>
+</div>
+<div class="mt-2" id="accessOtherDetails" style="display:none;">
+<input class="form-control" id="accessOtherText" placeholder="Please describe other access restrictions" type="text"/>
+</div>
+</div>
+<div class="mb-3">
+<label>Retrieval – API availability</label>
+<div class="form-check">
+<input class="form-check-input api-radio" id="apiManual" name="apiAvailability" type="radio" value="manual"/>
+<label class="form-check-label" for="apiManual">Manual download</label>
+</div>
+<div class="form-check">
+<input class="form-check-input api-radio" id="apiPartial" name="apiAvailability" type="radio" value="partial"/>
+<label class="form-check-label" for="apiPartial">Partial API support</label>
+</div>
+<div class="form-check">
+<input class="form-check-input api-radio" id="apiCommercial" name="apiAvailability" type="radio" value="commercial"/>
+<label class="form-check-label" for="apiCommercial">Commercial API</label>
+</div>
+<div class="form-check">
+<input class="form-check-input api-radio" id="apiOpen" name="apiAvailability" type="radio" value="open"/>
+<label class="form-check-label" for="apiOpen">Open API</label>
+</div>
+<div class="mt-2" id="apiDetails" style="display:none;">
+<input class="form-control" id="apiDetailsText" placeholder="Details about API (name, endpoint)" type="text"/>
+</div>
+</div>
+<div class="mb-3">
+<label>Usage rights / License</label>
+<div class="form-check">
+<input class="form-check-input" id="licenseOpen" name="usageRights" type="radio" value="Open"/>
+<label class="form-check-label" for="licenseOpen">Open</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="licenseRestricted" name="usageRights" type="radio" value="Restricted"/>
+<label class="form-check-label" for="licenseRestricted">Restricted</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="licenseCommercial" name="usageRights" type="radio" value="Commercial"/>
+<label class="form-check-label" for="licenseCommercial">Commercial</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="licenseUnknown" name="usageRights" type="radio" value="Unknown"/>
+<label class="form-check-label" for="licenseUnknown">Unknown</label>
+</div>
+</div>
+<div class="mb-3">
+<label>Data Format</label>
+<select class="form-select" id="dataFormat">
+<option value="">Select format</option>
+<option value="CSV">CSV</option>
+<option value="GeoJSON">GeoJSON</option>
+<option value="Shapefile">Shapefile</option>
+<option value="XLSX">Excel (XLSX)</option>
+<option value="TIFF">GeoTIFF</option>
+<option value="JSON">JSON</option>
+<option value="XML">XML</option>
+<option value="NetCDF">NetCDF</option>
+<option value="PDF">PDF</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="mb-3">
+<label>Format Standards (auto-filled via metadata conformance)</label>
+<div class="form-check">
+<input class="form-check-input" id="formatNo" name="formatStandards" type="radio" value="No"/>
+<label class="form-check-label" for="formatNo">No</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="formatUnclear" name="formatStandards" type="radio" value="Unclear"/>
+<label class="form-check-label" for="formatUnclear">Unclear</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="formatYes" name="formatStandards" type="radio" value="Yes"/>
+<label class="form-check-label" for="formatYes">Yes (standardized)</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="formatOGC" name="formatStandards" type="radio" value="OGC"/>
+<label class="form-check-label" for="formatOGC">OGC</label>
+</div>
+</div>
+<div class="mb-3">
+<label>Score Accessibility</label>
+<select class="form-select score-field" data-scoregroup="accessibility">
+<option value="">Select score</option>
+<option value="1">1: strongly restricted (private use, manual download, uncommon format)</option>
+<option value="2">2: commercial/proprietary (fee, license, API, format)</option>
+<option value="3">3: partly open access (license, API, exchange format)</option>
+<option value="4">4: fully open access (open license and API, interoperable format)</option>
+</select>
+</div>
+</div>
+<hr class="my-4 border-danger border-1"/>
+<!-- Spatial Accuracy Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Spatial Accuracy</strong></h4>
+<div class="mb-3">
+<label>CRS / Projection</label>
+<select class="form-select" id="crsSelect" name="crs">
+<option value="">Select Coordinate Reference System</option>
+<option value="WGS84">WGS 84</option>
+<option value="EPSG:3857">EPSG:3857</option>
+<option value="EPSG:4326">EPSG:4326</option>
+<option value="UTM">UTM</option>
+<option value="NAD83">NAD83</option>
+<option value="ETRS89">ETRS89</option>
+<option value="Lambert">Lambert Conformal Conic</option>
+<option value="Mercator">Mercator</option>
+<option value="Unknown">Unknown</option>
+<option value="Other">Other</option>
+</select>
+<div class="mt-2" id="crsOtherDetails" style="display:none;">
+<input class="form-control" placeholder="Please specify other CRS/projection" type="text"/>
+</div>
+</div>
+<div class="mb-3">
+<label>Positional Accuracy</label>
+<input class="form-control" id="positionalAccuracy" placeholder="Positional (in)accuracies, shifts, measurement errors" type="text"/>
+</div>
+<div class="mb-3">
+<label>Spatial Uncertainty</label>
+<input class="form-control" id="spatialUncertainty" placeholder="e.g., higher uncertainties on steep slopes" type="text"/>
+</div>
+<div class="mb-3">
+<label>Score Spatial Accuracy</label>
+<select class="form-select score-field" data-scoregroup="spatial-accuracy">
+<option value="">Select score</option>
+<option value="1">1: location unknown, no projection info</option>
+<option value="2">2: low positional accuracy, high spatial uncertainty, incomplete projection info</option>
+<option value="3">3: acceptable spatial uncertainty and positional inaccuracy, local projection</option>
+<option value="4">4: accurate geolocation, standard projection</option>
+</select>
+</div>
+</div>
+</div>
+<div class="navigation-buttons">
+<a class="btn-nav btn-previous" href="section1.html">Previous</a>
+<a class="btn-nav btn-next" href="section3.html">Next Section</a>
+</div>
+<script src="js/script_new.js"></script>
+<script src="js/script_new.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<footer class="text-center py-3 mt-auto bg-light border-top">
+<small>© 2025 Data Quality Evaluation • Created by Khizer &amp; Team</small>
+</footer>
+</body>
+</html>

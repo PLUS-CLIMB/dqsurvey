@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Context | Data Quality Evaluation</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Homepage Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+<div class="container-fluid">
+<a class="navbar-brand fw-bold text-primary" href="index.html">Data Quality Evaluation</a>
+<button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="section1.html">Initial Info</a></li>
+<li class="nav-item"><a class="nav-link" href="section2.html">Descriptives</a></li>
+<li class="nav-item"><a class="nav-link" href="section3.html">Design</a></li>
+<li class="nav-item" id="nav-conformance"><a class="nav-link" href="section4.html">Conformance</a></li>
+<li class="nav-item"><a class="nav-link" href="section5.html">Context</a></li>
+<li class="nav-item"><a class="nav-link" href="section6.html">Summary</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="overlay"></div>
+<div class="container my-4 main-content fade-in">
+<!-- Section 4 - Context -->
+<div class="section" id="context">
+<h3>4. Context</h3>
+<!-- Reputation Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Reputation</strong></h4>
+<div class="mb-3">
+<label>Creator</label>
+<input class="form-control" id="creator" placeholder="Responsible entity (person/organization/service)" type="text"/>
+</div>
+<div class="mb-3">
+<label>Contributors</label>
+<input class="form-control" id="contributors" placeholder="Name(s) of contributors" type="text"/>
+</div>
+<div class="mb-3">
+<label>Publisher</label>
+<input class="form-control" id="publisher" placeholder="Publishing entity" type="text"/>
+</div>
+<div class="mb-3">
+<label>Trust in producer(s)</label>
+<textarea class="form-control" id="trustProducer" placeholder="Describe the reputation of the responsible entity"></textarea>
+</div>
+<div class="mb-3">
+<label>Relation / Citations</label>
+<textarea class="form-control" id="relations" placeholder="Related resources, citations, publications"></textarea>
+<input class="form-control mt-2" id="relationsUrl" placeholder="URL to related resources" type="url"/>
+</div>
+<div class="mb-3">
+<label>Frequency of data use</label>
+<input class="form-control" id="frequencyUse" placeholder="e.g., frequently used by X community" type="text"/>
+</div>
+<div class="mb-3">
+<label>Audience</label>
+<input class="form-control" id="audience" placeholder="Target users / consumers" type="text"/>
+</div>
+<div class="mb-3">
+<label>Familiarity of data</label>
+<input class="form-control" id="familiarity" placeholder="How well-known the data source is" type="text"/>
+</div>
+<div class="mb-3">
+<label>Score reputation (data &amp; producer)</label>
+<select class="form-select score-field" data-scoregroup="context-reputation">
+<option value="">Select score</option>
+<option value="1">1: no info or unknown data source/producer</option>
+<option value="2">2: unfamiliar producer, rarely used/cited data</option>
+<option value="3">3: known producer/data, partly reviewed</option>
+<option value="4">4: well-known producer, frequently used data, reviewed/certified</option>
+</select>
+</div>
+</div>
+<hr class="my-4 border-danger border-1"/>
+<!-- Relevance Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Relevance</strong></h4>
+<div class="mb-3" id="strength-list">
+<label>Strengths</label>
+<div class="input-group mb-2">
+<input class="form-control" name="strengths[]" placeholder="Strength 1" type="text"/>
+<button class="btn btn-outline-success add-strength" type="button">+</button>
+</div>
+</div>
+<div class="mb-3" id="limitation-list">
+<label>Limitations</label>
+<div class="input-group mb-2">
+<input class="form-control" name="limitations[]" placeholder="Limitation 1" type="text"/>
+<button class="btn btn-outline-success add-limitation" type="button">+</button>
+</div>
+</div>
+<!-- Use-case specific fields -->
+<div class="use-case-only" style="display:none;">
+<div class="mb-3">
+<label>Relevance for specific use-case / fit for purpose</label>
+<textarea class="form-control" id="relevanceUsecase" placeholder="Describe relevance based on requirements"></textarea>
+</div>
+<div class="mb-3">
+<label>Impact of strengths for specific purpose</label>
+<textarea class="form-control" id="impactStrengths" placeholder="Describe positive impacts"></textarea>
+</div>
+<div class="mb-3">
+<label>Impact of limitations for specific purpose</label>
+<textarea class="form-control" id="impactLimitations" placeholder="Describe negative impacts"></textarea>
+</div>
+</div>
+<div class="mb-3">
+<label>Score relevance</label>
+<select class="form-select score-field" data-scoregroup="context-relevance">
+<option value="">Select score</option>
+<option value="1">1: data are not relevant</option>
+<option value="2">2: data are not well-fitting, but can provide some information</option>
+<option value="3">3: fit of data is acceptable</option>
+<option value="4">4: data are highly relevant</option>
+</select>
+</div>
+</div>
+<hr class="my-4 border-danger border-1"/>
+<!-- Applicability Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Applicability</strong></h4>
+<div class="mb-3" id="constraint-list">
+<label>Data constraints</label>
+<div class="input-group mb-2">
+<input class="form-control" name="constraints[]" placeholder="Constraint 1 (e.g., not valid for rainy season)" type="text"/>
+<button class="btn btn-outline-success add-constraint" type="button">+</button>
+</div>
+</div>
+<div class="mb-3">
+<label>Model data fit</label>
+<textarea class="form-control" id="modelDataFit" placeholder="Suitability/compatibility of data with model(s)"></textarea>
+</div>
+</div>
+<hr class="my-4 border-danger border-1"/>
+<!-- Interpretability Subsection -->
+<div class="subsection">
+<h4 class="text-danger"><strong>Interpretability</strong></h4>
+<div class="mb-3">
+<label>Label/Legend completeness</label>
+<textarea class="form-control" id="legendCompleteness" placeholder="Are legends/labels complete and clear?"></textarea>
+</div>
+<div class="mb-3">
+<label>Attribute description clarity</label>
+<textarea class="form-control" id="attributeClarity" placeholder="Are attribute descriptions clear?"></textarea>
+</div>
+</div>
+</div>
+<div class="navigation-buttons">
+<a class="btn-nav btn-previous" href="section4.html">Previous</a>
+<a class="btn-nav btn-next" href="section6.html">Summary</a>
+</div>
+<script src="js/script_new.js"></script>
+<script src="js/script_new.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<footer class="text-center py-3 mt-auto bg-light border-top">
+<small>© 2025 Data Quality Evaluation • Created by Khizer &amp; Team</small>
+</footer>
+</body>
+</html>

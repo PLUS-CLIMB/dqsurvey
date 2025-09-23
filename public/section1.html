@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Initial Information | Data Quality Evaluation</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Homepage Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+<div class="container-fluid">
+<a class="navbar-brand fw-bold text-primary" href="index.html">Data Quality Evaluation</a>
+<button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="section1.html">Initial Info</a></li>
+<li class="nav-item"><a class="nav-link" href="section2.html">Descriptives</a></li>
+<li class="nav-item"><a class="nav-link" href="section3.html">Design</a></li>
+<li class="nav-item" id="nav-conformance"><a class="nav-link" href="section4.html">Conformance</a></li>
+<li class="nav-item"><a class="nav-link" href="section5.html">Context</a></li>
+<li class="nav-item"><a class="nav-link" href="section6.html">Summary</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="overlay"></div>
+<div class="container my-4 main-content fade-in">
+<!-- Introduction -->
+<div class="section" id="intro">
+<h3>Initial Information</h3>
+<p>Welcome! Please complete the sections below. Fields marked with * are required.</p>
+<div class="mb-3">
+<label class="required" for="datasetTitle">Title of the Dataset</label>
+<input class="form-control" id="datasetTitle" placeholder="Enter dataset title" required="" type="text"/>
+</div>
+<div class="mb-3">
+<label for="evaluatorName">Evaluator</label>
+<input class="form-control" id="evaluatorName" placeholder="e.g., John Doe" type="text"/>
+</div>
+<div class="mb-3">
+<label for="evaluatorOrg">Affiliation</label>
+<input class="form-control" id="evaluatorOrg" placeholder="Organization / Institution" type="text"/>
+</div>
+<div class="mb-3">
+<label class="required" for="dataprocessinglevel">Data Processing Level</label>
+<select class="form-select" id="dataprocessinglevel" required="">
+<option value="">Select Processing Level</option>
+<option value="primary">Primary Data</option>
+<option value="products">Data Products</option>
+</select>
+<div class="form-text">Conformance section is only shown for Data Products.</div>
+</div>
+<div class="mb-3">
+<label class="required" for="dataType">Data Type</label>
+<select class="form-select" id="dataType" required="">
+<option value="">Select type</option>
+<option value="remote-sensing">Remote sensing</option>
+<option value="gis">GIS</option>
+<option value="model-ml">Model/ML</option>
+<option value="prediction">Prediction</option>
+<option value="survey">Survey</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="mb-3">
+<label class="required" for="evaluationType">Evaluation type and reason</label>
+<select class="form-select" id="evaluationType" required="">
+<option value="">Select type</option>
+<option title="General assessment of global/continental data" value="general-quality">General Data quality</option>
+<option title="Fit for purpose for a specified use case" value="use-case-adequacy">Use-case specific Data adequacy</option>
+</select>
+<div class="form-text">
+<strong>General Data quality:</strong> assessment of global/continental data.<br/>
+<strong>Use-case specific Data adequacy:</strong> fit for purpose for a unique scenario with specified requirements.
+        </div>
+</div>
+<!-- Use-case specific section -->
+<div class="border p-3 rounded bg-light" id="use-case-section" style="display: none;">
+<h5 class="text-primary mb-3">Use-case Specific Requirements</h5>
+<div class="mb-3">
+<label for="useCaseDescription">Use-case description</label>
+<textarea class="form-control" id="useCaseDescription" placeholder="Describe your specific use case and requirements" rows="3"></textarea>
+</div>
+<h6 class="text-secondary mb-3">Requirements</h6>
+<div class="mb-3">
+<label class="required" for="optimumDataCollection">Optimum data collection</label>
+<input class="form-control" id="optimumDataCollection" type="date"/>
+</div>
+<div class="mb-3">
+<label class="required">Optimum spatial resolution / aggregation level</label>
+<div id="pixel-size-input" style="display: none;">
+<div class="input-group">
+<input class="form-control" id="pixelSize" placeholder="Pixel size" type="number"/>
+<span class="input-group-text">meters</span>
+</div>
+<div class="form-text">For Remote Sensing data.</div>
+</div>
+<div id="grid-size-input" style="display: none;">
+<div class="input-group mb-2">
+<input class="form-control" id="gridSize" placeholder="Grid size" type="number"/>
+<span class="input-group-text">meters</span>
+</div>
+<div class="form-text">For grid-based (non-RS) data.</div>
+</div>
+<div id="aggregation-level-input" style="display: none;">
+<select class="form-select" id="aggregationLevel">
+<option value="">Select aggregation level</option>
+<option value="country">Country/Federation</option>
+<option value="region">Region/Province/State</option>
+<option value="city">City/City District/Village</option>
+<option value="household">Household</option>
+</select>
+<div class="form-text">For administrative/aggregated data.</div>
+</div>
+</div>
+<div class="mb-3">
+<label class="required" for="aoiType">Area of Interest (AOI)</label>
+<select class="form-select" id="aoiType">
+<option value="">Select AOI input method</option>
+<option value="dropdown">Select from dropdown</option>
+<option value="coordinates">Bounding box coordinates</option>
+<option value="upload">Upload file</option>
+</select>
+<div class="mt-2" id="aoi-dropdown" style="display: none;">
+<select class="form-select" id="aoiDropdown">
+<option value="">Select geographical identifier</option>
+<option value="global">Global</option>
+<option value="continent">Continental</option>
+<optgroup label="Countries (ISO 3166-1)">
+<option value="US">United States (US)</option>
+<option value="CA">Canada (CA)</option>
+<option value="GB">United Kingdom (GB)</option>
+<option value="DE">Germany (DE)</option>
+<option value="FR">France (FR)</option>
+</optgroup>
+</select>
+</div>
+<div class="mt-2" id="aoi-coordinates" style="display: none;">
+<div class="row">
+<div class="col-md-6">
+<label for="minLat">Min Latitude</label>
+<input class="form-control" id="minLat" placeholder="-90 to 90" step="any" type="number"/>
+</div>
+<div class="col-md-6">
+<label for="maxLat">Max Latitude</label>
+<input class="form-control" id="maxLat" placeholder="-90 to 90" step="any" type="number"/>
+</div>
+</div>
+<div class="row mt-2">
+<div class="col-md-6">
+<label for="minLon">Min Longitude</label>
+<input class="form-control" id="minLon" placeholder="-180 to 180" step="any" type="number"/>
+</div>
+<div class="col-md-6">
+<label for="maxLon">Max Longitude</label>
+<input class="form-control" id="maxLon" placeholder="-180 to 180" step="any" type="number"/>
+</div>
+</div>
+</div>
+<div class="mt-2" id="aoi-upload" style="display: none;">
+<input accept=".geojson,.kml,.shp,.gpx" class="form-control" id="aoiFile" type="file"/>
+<div class="form-text">Upload GeoJSON, KML, Shapefile, or GPX file</div>
+</div>
+</div>
+<div class="mb-3">
+<label for="otherRequirements">Other purpose-specific requirements</label>
+<textarea class="form-control" id="otherRequirements" placeholder="e.g., format, retrieval protocol, licensing, transferability" rows="3"></textarea>
+</div>
+</div>
+</div>
+</div>
+<div class="navigation-buttons">
+<a class="btn-nav btn-previous" href="index.html">Home</a>
+<a class="btn-nav btn-next" href="section2.html">Next Section</a>
+</div>
+<script src="js/script_new.js"></script>
+<script src="js/script_new.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<footer class="text-center py-3 mt-auto bg-light border-top">
+<small>© 2025 Data Quality Evaluation • Created by Khizer &amp; Team</small>
+</footer>
+</body>
+</html>
