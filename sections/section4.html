@@ -12,7 +12,7 @@
 <!-- Homepage Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
 <div class="container-fluid">
-<a class="navbar-brand fw-bold text-primary" href="index.html">Data Quality Evaluation</a>
+<a class="navbar-brand fw-bold text-primary" href="/index.html">Data Quality Evaluation</a>
 <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
 <span class="navbar-toggler-icon"></span>
 </button>
@@ -125,28 +125,55 @@
 <!-- Accuracy Subsection -->
 <div class="subsection">
 <h4 class="text-danger"><strong>Accuracy</strong></h4>
+        <div class="mb-3">
+<label class="required">Accuracy Type</label>
 <div class="mb-3">
-<label>Accuracy Type (auto-shown based on data type)</label>
+<div class="form-check">
+<input class="form-check-input" id="accuracyTypeThematic" name="accuracyType" type="radio" value="thematic"/>
+<label class="form-check-label" for="accuracyTypeThematic">
+Thematic classification accuracy
+</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="accuracyTypeAttribute" name="accuracyType" type="radio" value="attribute"/>
+<label class="form-check-label" for="accuracyTypeAttribute">
+Attribute accuracy
+</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="accuracyTypeModel" name="accuracyType" type="radio" value="model"/>
+<label class="form-check-label" for="accuracyTypeModel">
+Model performance
+</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="accuracyTypePlausibility" name="accuracyType" type="radio" value="plausibility"/>
+<label class="form-check-label" for="accuracyTypePlausibility">
+Data plausibility
+</label>
+</div>
+</div>
+
 <div id="accuracy-inputs">
 <div id="thematic-accuracy" style="display: none;">
 <label>Thematic classification accuracy (%)</label>
 <input class="form-control" id="thematicAccuracy" max="100" min="0" placeholder="% of correct classification results" type="number"/>
-<div class="form-text">For Remote Sensing data</div>
+<div class="form-text">Percentage of pixels/features correctly classified according to reference data</div>
 </div>
 <div id="attribute-accuracy" style="display: none;">
 <label>Attribute accuracy (%)</label>
 <input class="form-control" id="attributeAccuracy" max="100" min="0" placeholder="% of correct attribute values" type="number"/>
-<div class="form-text">For GIS data</div>
+<div class="form-text">Percentage of attribute values that are correct according to reference standards</div>
 </div>
 <div id="model-performance" style="display: none;">
 <label>Model performance</label>
-<textarea class="form-control" id="modelPerformance" placeholder="Assessment of model performance (metrics, validation)"></textarea>
-<div class="form-text">For Models/ML or Predictions</div>
+<textarea class="form-control" id="modelPerformance" rows="4" placeholder="Describe model accuracy metrics, validation results, and performance indicators..."></textarea>
+<div class="form-text">Include specific metrics (e.g., R² = 0.85, RMSE = 2.3m, MAE = 1.8m), validation methods, cross-validation results, and any performance benchmarks</div>
 </div>
 <div id="data-plausibility" style="display: none;">
 <label>Data plausibility</label>
-<textarea class="form-control" id="dataPlausibility" placeholder="Assessment of data plausibility"></textarea>
-<div class="form-text">For Survey or Other data</div>
+<textarea class="form-control" id="dataPlausibility" rows="4" placeholder="Assess whether data values are reasonable, logical, and meet expectations..."></textarea>
+<div class="form-text">Evaluate if values fall within expected ranges, follow logical patterns, are consistent with domain knowledge, and meet common-sense checks</div>
 </div>
 </div>
 </div>

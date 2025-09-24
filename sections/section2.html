@@ -12,7 +12,7 @@
 <!-- Homepage Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
 <div class="container-fluid">
-<a class="navbar-brand fw-bold text-primary" href="index.html">Data Quality Evaluation</a>
+<a class="navbar-brand fw-bold text-primary" href="/index.html">Data Quality Evaluation</a>
 <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
 <span class="navbar-toggler-icon"></span>
 </button>
@@ -61,13 +61,18 @@
 <option value="German">German</option>
 <option value="Spanish">Spanish</option>
 <option value="Chinese">Chinese</option>
-<option value="Other">Other</option>
+<option value="other">Other</option>
 </select>
+<div class="mt-2" id="language-other-container" style="display:none;">
+<label for="languageOtherInput">Please specify:</label>
+<input class="form-control" id="languageOtherInput" placeholder="Specify the language" type="text"/>
 </div>
+
 <div class="mb-3">
 <label>Metadata Documentation</label>
-<input class="form-control" id="metadataDoc" placeholder="Completeness, richness &amp; understandability of metadata" type="text"/>
-<label class="mt-2" for="metadata-conformance">Conformance to established standards</label>
+<input class="form-control" id="metadataDoc" placeholder="Completeness, and understandability of metadata" type="text"/>
+<label class="mt-2" for="metadata-conformance">Metadata Standards</label>
+<div class="form-text">Conformance to established standards</div>
 <select class="form-select" id="metadata-conformance">
 <option value="">Select conformance</option>
 <option value="no">No</option>
@@ -106,16 +111,18 @@
 <label>Score Metadata Documentation</label>
 <select class="form-select score-field" data-scoregroup="descriptives">
 <option value="">Select score</option>
-<option value="1">1: documentation largely missing</option>
-<option value="2">2: metadata not self-explanatory and standardized</option>
-<option value="3">3: metadata largely self-explanatory and standardized</option>
-<option value="4">4: fully documented, comprehensible, machine-readable</option>
+<option value="1">1: Documentation largely missing</option>
+<option value="2">2: Metadata not self-explanatory and standardized</option>
+<option value="3">3: Metadata largely self-explanatory and standardized</option>
+<option value="4">4: Fully documented, comprehensible, machine-readable</option>
 </select>
 </div>
 </div>
 <hr class="my-4 border-danger border-1"/>
+
 <!-- Accessibility Subsection -->
 <div class="subsection">
+
 <h4 class="text-danger"><strong>Accessibility</strong></h4>
 <div class="mb-3">
 <label>Access Restrictions</label>
@@ -197,7 +204,8 @@
 </select>
 </div>
 <div class="mb-3">
-<label>Format Standards (auto-filled via metadata conformance)</label>
+<label>Format Standards</label>
+<div class="form-text">auto-filled via metadata conformance</div>
 <div class="form-check">
 <input class="form-check-input" id="formatNo" name="formatStandards" type="radio" value="No"/>
 <label class="form-check-label" for="formatNo">No</label>
@@ -219,15 +227,17 @@
 <label>Score Accessibility</label>
 <select class="form-select score-field" data-scoregroup="accessibility">
 <option value="">Select score</option>
-<option value="1">1: strongly restricted (private use, manual download, uncommon format)</option>
-<option value="2">2: commercial/proprietary (fee, license, API, format)</option>
-<option value="3">3: partly open access (license, API, exchange format)</option>
-<option value="4">4: fully open access (open license and API, interoperable format)</option>
+<option value="1">1: Strongly restricted (private use, manual download, uncommon format)</option>
+<option value="2">2: Commercial OR proprietary (fee, license, API, format)</option>
+<option value="3">3: Partly open access (license, API, exchange format)</option>
+<option value="4">4: Fully open access (open license and API, interoperable format)</option>
 </select>
 </div>
 </div>
 <hr class="my-4 border-danger border-1"/>
+
 <!-- Spatial Accuracy Subsection -->
+
 <div class="subsection">
 <h4 class="text-danger"><strong>Spatial Accuracy</strong></h4>
 <div class="mb-3">
@@ -255,16 +265,16 @@
 </div>
 <div class="mb-3">
 <label>Spatial Uncertainty</label>
-<input class="form-control" id="spatialUncertainty" placeholder="e.g., higher uncertainties on steep slopes" type="text"/>
+<input class="form-control" id="spatialUncertainty" placeholder="doubt about geolocation or topological conditions" type="text"/>
 </div>
 <div class="mb-3">
 <label>Score Spatial Accuracy</label>
 <select class="form-select score-field" data-scoregroup="spatial-accuracy">
 <option value="">Select score</option>
-<option value="1">1: location unknown, no projection info</option>
-<option value="2">2: low positional accuracy, high spatial uncertainty, incomplete projection info</option>
-<option value="3">3: acceptable spatial uncertainty and positional inaccuracy, local projection</option>
-<option value="4">4: accurate geolocation, standard projection</option>
+<option value="1">1: Location unknown, no projection info</option>
+<option value="2">2: Low positional accuracy, high spatial uncertainty, incomplete projection info</option>
+<option value="3">3: Acceptable spatial uncertainty and positional inaccuracy, local projection</option>
+<option value="4">4: Accurate geolocation, standard projection</option>
 </select>
 </div>
 </div>

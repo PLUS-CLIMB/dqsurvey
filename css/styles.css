@@ -351,3 +351,11 @@ tr:hover {
 .d-none {
     display: none !important;
 }
+
+/* Required Field Styling */
+.required::after,
+label.required::after {
+    content: " *";
+    color: #dc3545;
+    font-weight: bold;
+}

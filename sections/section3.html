@@ -12,7 +12,7 @@
 <!-- Homepage Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
 <div class="container-fluid">
-<a class="navbar-brand fw-bold text-primary" href="index.html">Data Quality Evaluation</a>
+<a class="navbar-brand fw-bold text-primary" href="/index.html">Data Quality Evaluation</a>
 <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
 <span class="navbar-toggler-icon"></span>
 </button>
@@ -34,27 +34,28 @@
 <div class="section" id="design">
 <h3>2. Design</h3>
 <!-- Spatial Resolution Subsection -->
+
 <div class="subsection">
 <h4 class="text-danger"><strong>Spatial Resolution</strong></h4>
 <div class="mb-3">
-<label>Spatial Resolution</label>
+<label class="required">Spatial Resolution</label>
 <div id="resolution-inputs">
 <div id="pixel-resolution" style="display: none;">
 <div class="input-group">
-<input class="form-control" id="pixelResolutionValue" placeholder="Enter pixel size" type="number"/>
+<input class="form-control" id="pixelResolutionValue" placeholder="Enter pixel size" type="number" required/>
 <span class="input-group-text">meters</span>
 </div>
 <div class="form-text">Pixel size for Remote Sensing data</div>
 </div>
 <div id="grid-resolution" style="display: none;">
 <div class="input-group">
-<input class="form-control" id="gridResolutionValue" placeholder="Enter grid size" type="number"/>
+<input class="form-control" id="gridResolutionValue" placeholder="Enter grid size" type="number" required/>
 <span class="input-group-text">meters</span>
 </div>
 <div class="form-text">Grid size for other data types</div>
 </div>
 <div id="aggregation-resolution" style="display: none;">
-<select class="form-select" id="aggregationResolutionLevel">
+<select class="form-select" id="aggregationResolutionLevel" required>
 <option value="">Select aggregation level</option>
 <option value="country">Country/Federation</option>
 <option value="region">Region/Province/State</option>
@@ -63,18 +64,39 @@
 </select>
 <div class="form-text">Aggregation level for administrative data</div>
 </div>
+<!-- Manual selection option (if auto-detection fails) -->
+<div id="manual-resolution-selection" style="display: none;">
+<div class="alert alert-info">
+<strong>Manual Selection:</strong> Choose the appropriate resolution type for your data.
+</div>
+<div class="mb-2">
+<div class="form-check">
+<input class="form-check-input" type="radio" name="resolutionType" id="selectPixel" value="pixel">
+<label class="form-check-label" for="selectPixel">Pixel size (Remote Sensing)</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" type="radio" name="resolutionType" id="selectGrid" value="grid">
+<label class="form-check-label" for="selectGrid">Grid size (Regular grid data)</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" type="radio" name="resolutionType" id="selectAggregation" value="aggregation">
+<label class="form-check-label" for="selectAggregation">Aggregation level (Administrative data)</label>
+</div>
+</div>
+</div>
 </div>
 </div>
 <!-- General Design Scoring -->
 <div class="mb-3 general-design-only">
 <label>Score general design spatial resolution</label>
-<select class="form-select score-field" data-scoregroup="design-resolution">
+<select class="form-select score-field" id="generalResolutionScore" data-scoregroup="design-resolution">
 <option value="">Select score (1 to 4)</option>
 <option value="1">1: &gt;30m (RS/grid) / country/federation</option>
 <option value="2">2: 5–30m (RS/grid) / region, province, state</option>
 <option value="3">3: 1–5m (RS/grid) / city, city district, village</option>
 <option value="4">4: &lt;1m (RS/grid) / household</option>
 </select>
+<div class="form-text" id="auto-score-suggestion" style="display: none;"></div>
 </div>
 <!-- Use-case specific fields -->
 <div class="use-case-only" style="display:none;">
