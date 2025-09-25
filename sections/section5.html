@@ -139,6 +139,16 @@
 <label>Model data fit</label>
 <textarea class="form-control" id="modelDataFit" placeholder="Suitability/compatibility of data with model(s)"></textarea>
 </div>
+<!-- make score applicability-->
+<div class="mb-3">
+<label>Score applicability</label>
+<select class="form-select score-field" data-scoregroup="context-applicability">
+<option value="">Select score</option>
+<option value="1">1: constraints/non-compatibility of data and methods preclude usage</option>
+<option value="2">2: constraints/low fit of data and methods partly restrict use</option>
+<option value="3">3: constraints/ model-data-fit acceptable</option>
+<option value="4">4: no/minor constraints, data and method highly compatible</option>
+</select>
 </div>
 <hr class="my-4 border-danger border-1"/>
 <!-- Interpretability Subsection -->
