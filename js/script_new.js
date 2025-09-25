@@ -409,6 +409,11 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('Setting general-design-only element to:', isUseCase ? 'none' : 'block', el);
     });
     
+    document.querySelectorAll('.general-quality-only').forEach(el => {
+      el.style.display = isUseCase ? 'none' : 'block';
+      console.log('Setting general-quality-only element to:', isUseCase ? 'none' : 'block', el);
+    });
+    
     // Auto-fill use-case optimum date into design timeliness subsection
     const opt = document.getElementById('optimumDataCollection');
     const out = document.getElementById('optimumCollectionAuto');

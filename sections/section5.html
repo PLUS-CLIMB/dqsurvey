@@ -151,16 +151,28 @@
 </select>
 </div>
 <hr class="my-4 border-danger border-1"/>
-<!-- Interpretability Subsection -->
-<div class="subsection">
-<h4 class="text-danger"><strong>Interpretability</strong></h4>
+<!-- Transferability Subsection (only for General Data quality) -->
+<div class="subsection general-quality-only" style="display:none;">
+<h4 class="text-danger"><strong>Transferability</strong></h4>
 <div class="mb-3">
-<label>Label/Legend completeness</label>
-<textarea class="form-control" id="legendCompleteness" placeholder="Are legends/labels complete and clear?"></textarea>
+<label>Spatial homogeneity</label>
+<textarea class="form-control" id="spatialHomogeneity" placeholder="Describe comparability of properties and relations across space"></textarea>
+<div class="form-text">Consider: Spatial variability of completeness, Spatial stability of accuracy, Spatial consistency and Spatial uncertainty for evaluation</div>
 </div>
 <div class="mb-3">
-<label>Attribute description clarity</label>
-<textarea class="form-control" id="attributeClarity" placeholder="Are attribute descriptions clear?"></textarea>
+<label>Usability at different locations</label>
+<textarea class="form-control" id="usabilityLocations" placeholder="Describe applicability/reusability of data across space"></textarea>
+<div class="form-text">Consider: Spatial homogeneity, Coverage, Timeliness, Accessibility for evaluation</div>
+</div>
+<div class="mb-3">
+<label>Score transferability</label>
+<select class="form-select score-field" data-scoregroup="context-transferability">
+<option value="">Select score</option>
+<option value="1">1: transferability impossible, severe restrictions/spatial dependencies</option>
+<option value="2">2: low transferability, spatial homogeneity and reusability at varying locations</option>
+<option value="3">3: transferability possible, dependencies, accessibility, coverage and collection intervals acceptable</option>
+<option value="4">4: high transferability, multi-location usage, no/minor spatial dependency, global coverage, regular updates</option>
+</select>
 </div>
 </div>
 </div>
